@@ -4,21 +4,20 @@ import java.util.Date;
 
 public class User {
 
+	private Long id;
 	private String name;
-	private int age;
-	private int mobile;
 	private Date birthday;
+	private String address;
 
 	public User() {
 		super();
 	}
 
-	public User(String name, int age, int mobile, Date birthday) {
+	public User(String name, Date birthday, String address) {
 		super();
 		this.name = name;
-		this.age = age;
-		this.mobile = mobile;
 		this.birthday = birthday;
+		this.address = address;
 	}
 
 	public String getName() {
@@ -29,22 +28,6 @@ public class User {
 		this.name = name;
 	}
 
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public int getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(int mobile) {
-		this.mobile = mobile;
-	}
-
 	public Date getBirthday() {
 		return birthday;
 	}
@@ -53,9 +36,25 @@ public class User {
 		this.birthday = birthday;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", age=" + age + ", mobile=" + mobile + ", birthday=" + birthday + "]";
+		return "User [id=" + id + ", name=" + name + ", birthday=" + birthday + ", address=" + address + "]";
 	}
 
 }

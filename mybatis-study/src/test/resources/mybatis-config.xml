@@ -3,13 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<properties>
-		<property name="" value=""/>
-	
+	<properties resource="">
+		<property name="driver" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis"/>
+		<property name="username" value="root"/>
+		<property name="password" value="liyang"/>
 	</properties>
-	<settings>
-		<setting name="" value=""/>
-	</settings>
+	
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
@@ -22,6 +22,6 @@
 		</environment>
 	</environments>
 	<mappers>
-<!-- 		<mapper resource="mapper/BaseMapper.xml" /> -->
+		<mapper resource="mapper/BaseMapper.xml" />
 	</mappers>
 </configuration>

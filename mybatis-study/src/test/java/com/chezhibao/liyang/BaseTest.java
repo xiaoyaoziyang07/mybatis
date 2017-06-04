@@ -7,39 +7,31 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.chezhibao.liyang.dao.UserDao;
+import com.chezhibao.liyang.model.User;
+
 public class BaseTest {
 	
-	private SqlSessionFactory factory;
+	private static SqlSessionFactory factory;
 	
-	private SqlSession session;
+	private static SqlSession session;
 
 	@BeforeClass
-	public void testSessionFactory() throws IOException{
+	public static void testSessionFactory() throws IOException{
 		InputStream config = Resources.getResourceAsStream("mybatis-config.xml");
 		SqlSessionFactoryBuilder factoryBuilder = new SqlSessionFactoryBuilder();
 		factory = factoryBuilder.build(config);
-	}
-	
-	@Before
-	public void testSession(){
-		SqlSession session = factory.openSession();
-		Assert.assertNotNull(session);
+		session = factory.openSession();
 	}
 	
 	@Test
 	public void testMapper(){
-		Object selectOne = session.selectOne("org.mybatis.example.BlogMapper.selectBlog", 101);
+		UserDao userDao = session.getMapper(UserDao.class);
+		User user = userDao.getUser(2L);
+		System.out.println(user);
 	}
 	
-	@After
-	public void closeSession(){
-		session.close();
-	}
 }
